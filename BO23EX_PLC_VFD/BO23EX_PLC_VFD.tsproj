@@ -1,0 +1,318 @@
+<?xml version="1.0"?>
+<TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4024.35">
+	<ImageDatas>
+		<ImageData Id="1000">424dd6020000000000003600000028000000100000000e0000000100180000000000a002000000000000000000000000000000000000ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff808080808080808080808080808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0ff0000c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ff000000ff00ffff00ffff00ffc0c0c0ff0000ff0000ff0000808080ff00ff000000000000000000000000000000000000000000ff00ffff00ffff00ffc0c0c0c0c0c0ff0000c0c0c0808080ff00ff0000000000000000000000000000000000000000000000ff0000ffff00ffc0c0c0c0c0c0ff0000c0c0c0808080ff00ff000000000000000000000000000000000000000000ff00ffff00ffff00ffc0c0c0c0c0c0ff0000c0c0c0808080ff00ffff00ffff00ffff00ff000000ff00ffff00ff000000ff00ffff00ffff00ffc0c0c0c0c0c0ff0000c0c0c0808080ff00ff000000000000000000000000ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0ff0000c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0ff0000c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0ff0000c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ff</ImageData>
+	</ImageDatas>
+	<Project ProjectGUID="{7EC62CDC-C91C-4899-882E-F1BCEF0AF44C}" TargetNetId="172.19.38.34.1.1" ShowHideConfigurations="#x107">
+		<System>
+			<Tasks>
+				<Task Id="3" Priority="20" CycleTime="100000" AmsPort="350" AdtTasks="true">
+					<Name>PlcTask</Name>
+				</Task>
+			</Tasks>
+		</System>
+		<Plc>
+			<Project GUID="{5FEC0ABE-00AC-48FA-B1B8-8C60190ED615}" Name="PLC_VFD" PrjFilePath="PLC_VFD\PLC_VFD.plcproj" TmcFilePath="PLC_VFD\PLC_VFD.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="PLC_VFD\PLC_VFD.tmc" TmcHash="{76D1E9A6-1918-CDE6-B509-9FB9DBBE7EF8}">
+					<Name>PLC_VFD Instance</Name>
+					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
+					<Vars VarGrpType="1">
+						<Name>PlcTask Inputs</Name>
+						<Var>
+							<Name>MAIN.aMotorIO[0].rInn_RPM</Name>
+							<Comment><![CDATA[ Each motor's parameters are read/written through the I/O defined in this struct.]]></Comment>
+							<Type>REAL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.aMotorIO[0].rInn_Torque</Name>
+							<Type>REAL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.aMotorIO[0].rInn_Current</Name>
+							<Type>REAL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.aMotorIO[0].rInn_Voltage</Name>
+							<Type>REAL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.aMotorIO[0].rInn_Frequency</Name>
+							<Type>REAL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.aMotorIO[0].iInn_Controller</Name>
+							<Type>UINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.aMotorIO[0].iInn_State</Name>
+							<Type>UINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.aMotorIO[0].StatusWord</Name>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.aMotorIO[1].rInn_RPM</Name>
+							<Comment><![CDATA[ Each motor's parameters are read/written through the I/O defined in this struct.]]></Comment>
+							<Type>REAL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.aMotorIO[1].rInn_Torque</Name>
+							<Type>REAL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.aMotorIO[1].rInn_Current</Name>
+							<Type>REAL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.aMotorIO[1].rInn_Voltage</Name>
+							<Type>REAL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.aMotorIO[1].rInn_Frequency</Name>
+							<Type>REAL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.aMotorIO[1].iInn_Controller</Name>
+							<Type>UINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.aMotorIO[1].iInn_State</Name>
+							<Type>UINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.aMotorIO[1].StatusWord</Name>
+							<Type>WORD</Type>
+						</Var>
+					</Vars>
+					<Vars VarGrpType="2" AreaNo="1">
+						<Name>PlcTask Outputs</Name>
+						<Var>
+							<Name>MAIN.aMotorIO[0].rNew_Frequency</Name>
+							<Type>REAL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.aMotorIO[0].iNew_Controller</Name>
+							<Type>UINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.aMotorIO[0].ControlWord</Name>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.aMotorIO[1].rNew_Frequency</Name>
+							<Type>REAL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.aMotorIO[1].iNew_Controller</Name>
+							<Type>UINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.aMotorIO[1].ControlWord</Name>
+							<Type>WORD</Type>
+						</Var>
+					</Vars>
+					<UnrestoredVarLinks ImportTime="2023-05-15T16:15:19">
+						<OwnerA Name="InputDst" Prefix="TIPC^PLC_VFD^PLC_VFD Instance" Type="1">
+							<OwnerB Name="TIID^Master (EtherCAT)^Drive 1 (FECA-01 v1.31 and ACS880 AINFC v2.62)">
+								<Link VarA="MAIN.aMotorIO[1].iMotor_Controller" TypeA="UINT" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000005}" VarB="TxPDO 21 map^19.01 Actual operation mode" RestoreInfo="ANotFound"/>
+								<Link VarA="MAIN.aMotorIO[1].rMotor_Current" TypeA="REAL" InOutA="0" GuidA="{18071995-0000-0000-0000-00000000000D}" VarB="TxPDO 21 map^01.07 Motor current" RestoreInfo="ANotFound"/>
+								<Link VarA="MAIN.aMotorIO[1].rMotor_Frequency" TypeA="REAL" InOutA="0" GuidA="{18071995-0000-0000-0000-00000000000D}" VarB="TxPDO 21 map^01.06 Output frequency" RestoreInfo="ANotFound"/>
+								<Link VarA="MAIN.aMotorIO[1].rMotor_RPM" TypeA="REAL" InOutA="0" GuidA="{18071995-0000-0000-0000-00000000000D}" VarB="TxPDO 21 map^01.01 Motor speed used" RestoreInfo="ANotFound"/>
+								<Link VarA="MAIN.aMotorIO[1].rMotor_Torque" TypeA="REAL" InOutA="0" GuidA="{18071995-0000-0000-0000-00000000000D}" VarB="TxPDO 21 map^01.10 Motor torque" RestoreInfo="ANotFound"/>
+								<Link VarA="MAIN.aMotorIO[1].rMotor_Voltage" TypeA="REAL" InOutA="0" GuidA="{18071995-0000-0000-0000-00000000000D}" VarB="TxPDO 21 map^01.13 Output voltage" RestoreInfo="ANotFound"/>
+							</OwnerB>
+						</OwnerA>
+						<OwnerA Name="OutputSrc" Prefix="TIPC^PLC_VFD^PLC_VFD Instance" Type="2">
+							<OwnerB Name="TIID^Master (EtherCAT)^Drive 1 (FECA-01 v1.31 and ACS880 AINFC v2.62)">
+								<Link VarA="IO.iMotor1_New_Controller" TypeA="UINT" InOutA="1" GuidA="{18071995-0000-0000-0000-000000000005}" VarB="RxPDO 6 map^19.12 Ext1 control mode" RestoreInfo="ANotFound"/>
+							</OwnerB>
+						</OwnerA>
+					</UnrestoredVarLinks>
+					<Contexts>
+						<Context>
+							<Id NeedCalleeCall="true">0</Id>
+							<Name>PlcTask</Name>
+							<ManualConfig>
+								<OTCID>#x02010030</OTCID>
+							</ManualConfig>
+							<Priority>20</Priority>
+							<CycleTime>10000000</CycleTime>
+						</Context>
+					</Contexts>
+					<TaskPouOids>
+						<TaskPouOid Prio="20" OTCID="#x08502001"/>
+					</TaskPouOids>
+				</Instance>
+			</Project>
+		</Plc>
+		<Io>
+			<Device Id="3" DevType="111" DevFlags="#x0003" AmsPort="28675" AmsNetId="172.19.38.34.4.1" RemoteName="Master (EtherCAT)" InfoImageId="3">
+				<Name>Master (EtherCAT)</Name>
+				<AddressInfo>
+					<Pnp>
+						<DeviceDesc>Local Area Connection 4 (TwinCAT-Intel PCI Ethernet</DeviceDesc>
+						<DeviceName>\DEVICE\{6E80CBE7-4F3F-47E9-B8FA-44B8C2A65517}</DeviceName>
+						<DeviceData>000105124259</DeviceData>
+					</Pnp>
+				</AddressInfo>
+				<Image Id="2" AddrType="9" ImageType="3">
+					<Name>Image</Name>
+				</Image>
+				<Box Id="1" BoxType="9099" BoxFlags="#x00000020">
+					<Name>Drive 1 (FECA-01 v1.31 and ACS880 AINFC v2.62)</Name>
+					<ImageId>1000</ImageId>
+					<EtherCAT SlaveType="2" MboxDataLinkLayer="true" CycleMBoxPolling="true" CoeType="15" VendorId="#x000000b7" ProductCode="#x00000259" RevisionNo="#x00000131" InfoDataAddr="true" InfoDataSoeDS401="true" PortPhys="17" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="FECA-01 v1.31 and ACS880 AINFC v2.62" Desc="FECA-01 v1.31 and ACS880 AINFC v2.62" PortABoxInfo="#x00ffffff">
+						<SyncMan>0012f800260001000100000032000001f800001226010000</SyncMan>
+						<SyncMan>f812f800220001000200000032000001f800f81222010000</SyncMan>
+						<SyncMan>001004002400010003000000000000000000001024010000</SyncMan>
+						<SyncMan>00111c002000010004000000000000000000001120010000</SyncMan>
+						<Fmmu>0000000000000000001000020100000001000000000000000000000000000000</Fmmu>
+						<Fmmu>0000000000000000001100010100000002000000000000000000000000000000</Fmmu>
+						<Pdo Name="TxPDO 1 map" Index="#x1a00" Flags="#x0000">
+							<Entry Name="Statusword" Index="#x6041">
+								<Type>UINT</Type>
+							</Entry>
+							<Entry Name="19.12 Ext1 control mode" Index="#x4013" Sub="#x0c">
+								<Type>UINT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="TxPDO 2 map" Index="#x1a01" Flags="#x0000">
+							<Entry Name="Statusword" Index="#x6041">
+								<Type>UINT</Type>
+							</Entry>
+							<Entry Name="Position actual value" Index="#x6064">
+								<Type>DINT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="TxPDO 3 map" Index="#x1a02" Flags="#x0000">
+							<Entry Name="Statusword" Index="#x6041">
+								<Type>UINT</Type>
+							</Entry>
+							<Entry Name="Position actual value" Index="#x6064">
+								<Type>DINT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="TxPDO 4 map" Index="#x1a03" Flags="#x0000">
+							<Entry Name="Statusword" Index="#x6041">
+								<Type>UINT</Type>
+							</Entry>
+							<Entry Name="Position actual value" Index="#x6064">
+								<Type>DINT</Type>
+							</Entry>
+							<Entry Name="Torque actual value" Index="#x6077">
+								<Type>INT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="TxPDO 6 map" Index="#x1a05" Flags="#x0000">
+							<Entry Name="Statusword" Index="#x6041">
+								<Type>UINT</Type>
+							</Entry>
+							<Entry Name="vl velocity actual value" Index="#x6044">
+								<Type>INT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="TxPDO 21 map" Index="#x1a14" Flags="#x0000" SyncMan="3">
+							<Entry Name="ABB Drives status word" Index="#x2104">
+								<Type>UINT</Type>
+							</Entry>
+							<Entry Name="ABB Drives ACT1" Index="#x2105">
+								<Type>INT</Type>
+							</Entry>
+							<Entry Name="ABB Drives ACT2" Index="#x2106">
+								<Type>INT</Type>
+							</Entry>
+							<Entry Name="19.01 Actual operation mode" Index="#x4013" Sub="#x01">
+								<Type>UINT</Type>
+							</Entry>
+							<Entry Name="01.01 Motor speed used" Index="#x4001" Sub="#x01">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="01.07 Motor current" Index="#x4001" Sub="#x07">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="01.06 Output frequency" Index="#x4001" Sub="#x06">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="01.13 Output voltage" Index="#x4001" Sub="#x0d">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="01.10 Motor torque" Index="#x4001" Sub="#x0a">
+								<Type>REAL</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="RxPDO 1 map" Index="#x1600" InOut="1" Flags="#x0000">
+							<Entry Name="Controlword" Index="#x6040">
+								<Type>UINT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="RxPDO 2 map" Index="#x1601" InOut="1" Flags="#x0000">
+							<Entry Name="Controlword" Index="#x6040">
+								<Type>UINT</Type>
+							</Entry>
+							<Entry Name="Target position" Index="#x607a">
+								<Type>DINT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="RxPDO 3 map" Index="#x1602" InOut="1" Flags="#x0000">
+							<Entry Name="Controlword" Index="#x6040">
+								<Type>UINT</Type>
+							</Entry>
+							<Entry Name="Target velocity" Index="#x60ff">
+								<Type>DINT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="RxPDO 4 map" Index="#x1603" InOut="1" Flags="#x0000" SyncMan="2">
+							<Entry Name="Controlword" Index="#x6040">
+								<Type>UINT</Type>
+							</Entry>
+							<Entry Name="Target torque" Index="#x6071">
+								<Type>INT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="RxPDO 6 map" Index="#x1605" InOut="1" Flags="#x0000">
+							<Entry Name="Controlword" Index="#x6040">
+								<Type>UINT</Type>
+							</Entry>
+							<Entry Name="vl target velocity" Index="#x6042">
+								<Type>INT</Type>
+							</Entry>
+							<Entry Name="19.12 Ext1 control mode" Index="#x4013" Sub="#x0c">
+								<Type>UINT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="RxPDO 21 map" Index="#x1614" InOut="1" Flags="#x0000">
+							<Entry Name="ABB Drives control word" Index="#x2101">
+								<Type>UINT</Type>
+							</Entry>
+							<Entry Name="ABB Drives REF1" Index="#x2102">
+								<Type>INT</Type>
+							</Entry>
+							<Entry Name="ABB Drives REF2" Index="#x2103">
+								<Type>INT</Type>
+							</Entry>
+						</Pdo>
+						<CoeProfile ProfileNo="402"/>
+					</EtherCAT>
+				</Box>
+				<EtherCAT/>
+			</Device>
+		</Io>
+	</Project>
+	<Mappings>
+		<MappingInfo Identifier="{00000000-2001-0850-0020-500820000403}" Id="#x02030010"/>
+		<MappingInfo Identifier="{00000000-2001-0850-0020-500831000403}" Id="#x02030020"/>
+		<OwnerA Name="TIPC^PLC_VFD^PLC_VFD Instance">
+			<OwnerB Name="TIID^Master (EtherCAT)^Drive 1 (FECA-01 v1.31 and ACS880 AINFC v2.62)">
+				<Link VarA="PlcTask Inputs^MAIN.aMotorIO[0].StatusWord" VarB="TxPDO 21 map^ABB Drives status word"/>
+				<Link VarA="PlcTask Inputs^MAIN.aMotorIO[0].iInn_Controller" VarB="TxPDO 21 map^19.01 Actual operation mode"/>
+				<Link VarA="PlcTask Inputs^MAIN.aMotorIO[0].iInn_State" VarB="InfoData^State"/>
+				<Link VarA="PlcTask Inputs^MAIN.aMotorIO[0].rInn_Current" VarB="TxPDO 21 map^01.07 Motor current"/>
+				<Link VarA="PlcTask Inputs^MAIN.aMotorIO[0].rInn_Frequency" VarB="TxPDO 21 map^01.06 Output frequency"/>
+				<Link VarA="PlcTask Inputs^MAIN.aMotorIO[0].rInn_RPM" VarB="TxPDO 21 map^01.01 Motor speed used"/>
+				<Link VarA="PlcTask Inputs^MAIN.aMotorIO[0].rInn_Torque" VarB="TxPDO 21 map^01.10 Motor torque"/>
+				<Link VarA="PlcTask Inputs^MAIN.aMotorIO[0].rInn_Voltage" VarB="TxPDO 21 map^01.13 Output voltage"/>
+			</OwnerB>
+		</OwnerA>
+	</Mappings>
+</TcSmProject>

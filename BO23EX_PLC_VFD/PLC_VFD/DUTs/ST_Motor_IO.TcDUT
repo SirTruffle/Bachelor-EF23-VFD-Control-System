@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <DUT Name="ST_Motor_IO" Id="{913f0e9f-d496-4944-8020-2685981aa152}">
+    <Declaration><![CDATA[TYPE ST_Motor_IO :
+STRUCT
+	// Each motor's parameters are read/written through the I/O defined in this struct.
+	rInn_RPM			AT%I*	: REAL;
+	rInn_Torque			AT%I*	: REAL;
+	rInn_Current		AT%I*	: REAL;
+	rInn_Voltage		AT%I*	: REAL;
+	rInn_Frequency		AT%I*	: REAL;
+	iInn_Controller		AT%I*	: UINT;
+	iInn_State			AT%I*	: UINT;
+	
+	rReference			AT%Q*	: REAL;
+	iNew_Controller		AT%Q*	: UINT;
+	
+	StatusWord 			AT%I*	: WORD;
+	ControlWord			AT%Q*	: WORD;			
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

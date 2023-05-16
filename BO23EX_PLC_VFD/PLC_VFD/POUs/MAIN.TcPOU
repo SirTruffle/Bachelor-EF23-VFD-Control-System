@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="MAIN" Id="{e2a6670b-f53f-43ec-9831-6e17f485704e}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM MAIN
+VAR
+	bFirst_Startup			: BOOL		:= TRUE;
+	bEmergencyStop			: BOOL 		:= FALSE;
+	
+	aMotorList				: ARRAY[0..GVL.iNumb_Motors] OF FB_Motor;
+	aMotorParamList			: ARRAY[0..GVL.iNumb_Motors] OF ST_Motor_Params;
+	aMotorIO				: ARRAY[0..GVL.iNumb_Motors] OF ST_Motor_IO;			
+	
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[FirstStartup();
+EmergencyStop();
+
+MotorParamsUpdater();]]></ST>
+    </Implementation>
+    <Method Name="EmergencyStop" Id="{f7b823a6-e5a1-47b3-80b1-a4b356f9e320}">
+      <Declaration><![CDATA[METHOD EmergencyStop
+VAR_INPUT
+END_VAR
+VAR
+	iCounter	: INT;
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[	// sets the 2nd bit of each motor objects controlWord to TRUE, wich triggers the drives stop function.
+IF bEmergencyStop THEN
+	FOR iCounter := 0 TO GVL.iNumb_Motors DO 
+		aMotorList[iCounter].ControlWord.2	:= TRUE;	//Emergency stop bit.
+	END_FOR
+	
+END_IF]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="FirstStartup" Id="{6cfa1b33-99e9-4779-ab41-834c32f642e1}">
+      <Declaration><![CDATA[METHOD FirstStartup
+VAR_INPUT
+END_VAR
+VAR
+	iCounter	:INT;
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[	// Runs only the at First startup. sets each motor object in arran 10 th and 0 ht bit to TRUE,
+	// where the 10th activates the drives remote control mode
+	// and the 0th activates the drives READY TO RUN function
+	// Also resets EMERGENCY STOP to FALSE.
+IF bFirst_Startup THEN
+	FOR iCounter := 0 TO GVL.iNumb_Motors DO
+		aMotorList[iCounter].ControlWord.10 := TRUE;	// Remote control 
+		aMotorList[iCounter].ControlWord.0 := TRUE;		// READY TO RUN
+	END_FOR
+	bEmergencyStop	:= FALSE;							// Resets EmergencyStop after Restart.
+	bFirst_Startup 	:= FALSE;
+END_IF
+
+
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="MotorParamsUpdater" Id="{d1c5899c-0ba6-4bca-a0b4-22c592ef0cc8}">
+      <Declaration><![CDATA[METHOD MotorParamsUpdater
+VAR_INPUT
+END_VAR
+VAR 
+	iCounter: INT;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[	// Loop through each motor object in motor array and sets it's parameters acording to reacived values from the drive
+	// and updates drive controller and reference if a change is detected from user through the HMI.
+FOR iCounter := 0 TO GVL.iNumb_Motors BY 1 DO 
+	
+		//Updates motor object's parameters according to the drives real time values.
+	aMotorList[iCounter].iState_Input 			:= aMotorIO[iCounter].iInn_State;
+	aMotorList[iCounter].iController_Input		:= aMotorIO[iCounter].iInn_Controller;
+	aMotorList[iCounter].rCurrent_Input			:= aMotorIO[iCounter].rInn_Current;
+	aMotorList[iCounter].rReference_Input		:= aMotorIO[iCounter].rInn_Frequency;
+	aMotorList[iCounter].rRPM_Input				:= aMotorIO[iCounter].rInn_RPM;
+	aMotorList[iCounter].rTorque_Input			:= aMotorIO[iCounter].rInn_Torque;
+	aMotorList[iCounter].rVoltage_Input			:= aMotorIO[iCounter].rInn_Voltage;
+	
+				// Updates Frequency and control method for the current indexed motor
+				// in the array, if the corresponding array position in it's Parameter list is TRUE, wich comes from the HMI.
+		IF aMotorParamList[iCounter].bSelectMotor = TRUE THEN
+			IF (aMotorList[iCounter].iController <> HMI.iControler_Input) THEN
+				aMotorList[iCounter].iController_Input	:= HMI.iControler_Input;
+				aMotorIO[iCounter].iNew_Controller		:= HMI.iControler_Input;
+			END_IF
+			IF (aMotorList[iCounter].rReference <> HMI.iReference_Input) THEN
+				aMotorList[iCounter].rReference_Input	:= HMI.iReference_Input;
+				aMotorIO[iCounter].rReference		:= HMI.iReference_Input;
+			END_IF
+		END_IF
+	
+		//  Send motor parameters to an array for display to HMI..
+	aMotorParamList[iCounter].iState				:= aMotorList[iCounter].iState;
+	aMotorParamList[iCounter].iControlMethod		:= aMotorList[iCounter].iController;
+	aMotorParamList[iCounter].rCurrent			:= aMotorList[iCounter].rCurrent;
+	aMotorParamList[iCounter].rFrequency			:= aMotorList[iCounter].rReference;
+	aMotorParamList[iCounter].rRPM				:= aMotorList[iCounter].rRPM;
+	aMotorParamList[iCounter].rTorque			:= aMotorList[iCounter].rTorque;
+	aMotorParamList[iCounter].rVoltage			:= aMotorList[iCounter].rVoltage;
+		
+END_FOR
+
+]]></ST>
+      </Implementation>
+    </Method>
+    <LineIds Name="MAIN">
+      <LineId Id="584" Count="0" />
+      <LineId Id="598" Count="1" />
+      <LineId Id="542" Count="0" />
+    </LineIds>
+    <LineIds Name="MAIN.EmergencyStop">
+      <LineId Id="21" Count="0" />
+      <LineId Id="6" Count="1" />
+      <LineId Id="15" Count="0" />
+      <LineId Id="10" Count="0" />
+      <LineId Id="14" Count="0" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="MAIN.FirstStartup">
+      <LineId Id="6" Count="0" />
+      <LineId Id="63" Count="0" />
+      <LineId Id="53" Count="0" />
+      <LineId Id="64" Count="0" />
+      <LineId Id="41" Count="0" />
+      <LineId Id="60" Count="1" />
+      <LineId Id="44" Count="0" />
+      <LineId Id="42" Count="0" />
+      <LineId Id="52" Count="0" />
+      <LineId Id="45" Count="0" />
+      <LineId Id="39" Count="1" />
+      <LineId Id="5" Count="0" />
+      <LineId Id="38" Count="0" />
+    </LineIds>
+    <LineIds Name="MAIN.MotorParamsUpdater">
+      <LineId Id="565" Count="0" />
+      <LineId Id="615" Count="0" />
+      <LineId Id="566" Count="0" />
+      <LineId Id="617" Count="0" />
+      <LineId Id="567" Count="9" />
+      <LineId Id="616" Count="0" />
+      <LineId Id="577" Count="0" />
+      <LineId Id="604" Count="0" />
+      <LineId Id="578" Count="6" />
+      <LineId Id="608" Count="0" />
+      <LineId Id="585" Count="10" />
+      <LineId Id="606" Count="0" />
+      <LineId Id="49" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

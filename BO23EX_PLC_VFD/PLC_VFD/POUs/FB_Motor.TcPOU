@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_Motor" Id="{478e19b7-e9b2-4bad-8853-6e01cc0adcf3}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_Motor
+VAR_INPUT
+	iState_Input			: UINT;
+	iController_Input		: UINT;
+	
+	rCurrent_Input			: REAL;
+	rReference_Input		: REAL;
+	rRPM_Input				: REAL;
+	rTorque_Input			: REAL;
+	rVoltage_Input			: REAL;
+	
+	StatusWord				: WORD;
+	ControlWord				: WORD;
+END_VAR
+VAR
+	iState			: UINT	:= iState_Input;
+	iController		: UINT	:= iController_Input;
+	
+	rCurrent		: REAL	:= rCurrent_Input;
+	rReference		: REAL	:= rReference_Input;
+	rRPM			: REAL	:= rRPM_Input;
+	rTorque			: REAL	:= rTorque_Input;
+	rVoltage		: REAL	:= rVoltage_Input;
+	
+	wControl		: WORD	:= ControlWord;
+	wStatus			: WORD	:= StatusWord;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[// Designed to hold values Received from the drive and HMI.]]></ST>
+    </Implementation>
+    <LineIds Name="FB_Motor">
+      <LineId Id="190" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
